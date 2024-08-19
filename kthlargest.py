@@ -1,4 +1,26 @@
+import heapq
 class KthLargest:
+    def __init__(self, k: int, nums):
+        self.k = k
+        self.nums = nums.copy()
+        if k > len(nums):
+            self.topk = nums.copy()
+        else:
+            self.topk = heapq.nlargest(k, nums)
+            
+        heapq.heapify(self.topk)
+
+    def add(self, val: int) -> int:
+        self.nums.append(val)
+        
+        if len(self.topk) < self.k or val >= self.topk[0]:
+            heapq.heappush(self.topk, val)
+            
+        if len(self.topk) > self.k:
+            heapq.heappop(self.topk)
+        
+        return self.topk[0]
+class KthLargestWithoutHeap:
     def __init__(self, k: int, nums):
         self.k = k
         self.nums = nums.copy()
