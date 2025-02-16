@@ -1,7 +1,7 @@
 import time
 from datetime import timedelta
 import random
-import kthlargest
+import solutions.kthlargest as kthlargest
 
 
 def gen_rand_list(k):
