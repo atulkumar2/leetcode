@@ -46,6 +46,21 @@ class TestLC75(unittest.TestCase):
     self.assertFalse(LC75Arrays().can_place_flowers([1,0,0,0,1], 2))
     self.assertFalse(LC75Arrays().can_place_flowers([1,0,0,0,0,1], 2))
 
+  def test_reverse_vowels(self):
+    """Test reverse_vowels
+    """
+    tuples = [
+      ("hello", "holle"),
+      ("leetcode", "leotcede"),
+      ("aA", "Aa"),
+      ("a", "a"),
+      ("A", "A"),
+      ("", ""),
+      ("racecar", "racecar"),
+      ("aAeEiIoOuU", "UuOoIiEeAa"),    ]
+    for t in tuples:
+      self.assertEqual(LC75Arrays().reverse_vowels(t[0]), t[1])
+
 
 if __name__ == "__main__":
     unittest.main()

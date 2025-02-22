@@ -136,3 +136,30 @@ class LC75Arrays:
             flowerbed[-1] = 1
 
         return n == 0
+
+    def reverse_vowels(self, s: str) -> str:
+        """Given a string s, reverse only all the vowels in the string and return it.
+
+        The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+        https://leetcode.com/problems/reverse-vowels-of-a-string/
+
+        Args:
+            s (str): _description_
+
+        Returns:
+            str: _description_
+        """
+        vowels = ['a','e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+        pos_v = []
+        for i in range(len(s)):
+            if s[i] in vowels:
+                pos_v.append(i)
+
+        s = list(s)
+        for i in range(round(len(pos_v)/2)):
+            temp = s[pos_v[i]]
+            s[pos_v[i]] = s[pos_v[-(i+1)]]
+            s[pos_v[-(i+1)]] = temp
+
+        return "".join(s)
