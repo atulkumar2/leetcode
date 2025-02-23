@@ -3,7 +3,7 @@ https://leetcode.com/studyplan/leetcode-75/
 
 """
 
-class LC75Arrays:
+class LC75ArraysEasy:
     """Leetcode easy solutions
     """
     def merge_alternately(self, word1: str, word2: str) -> str:
@@ -163,3 +163,55 @@ class LC75Arrays:
             s[pos_v[-(i+1)]] = temp
 
         return "".join(s)
+
+class LC75ArraysMedium:
+    """Leetcode medium solutions
+    """
+    def reverse_words(self, s: str) -> str:
+        """Given an input string s, reverse the order of the words.
+        The words in s will be separated by at least one space.
+        Return a string of the words in reverse order concatenated by a single space.
+        https://leetcode.com/problems/reverse-words-in-a-string/
+
+
+        Args:
+            s (str): _description_
+
+        Returns:
+            str: _description_
+        """
+        parts = s.split()
+        parts.reverse()
+        return " ".join([part for part in parts])
+
+    def product_except_self(self, nums: list[int]) -> list[int]:
+        """Return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+        The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+        Algorithm must run in O(n) time and without using the division operation.
+
+        https://leetcode.com/problems/product-of-array-except-self/
+
+        Args:
+            nums (list[int]): _description_
+
+        Returns:
+            list[int]: _description_
+        """
+
+        if len(nums) == 2:
+            return [nums[1],nums[0]]
+
+        answer = [1]
+        mult = 1
+        for i in range(1, len(nums)):
+            mult = (mult * nums[i-1])
+            answer.append(mult)
+
+        mult = 1
+        for j in range(len(nums)-2, -1, -1):
+            mult = (mult * nums[j+1])
+            answer[j] = (answer[j] * mult)
+
+        return answer
