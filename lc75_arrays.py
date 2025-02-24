@@ -3,6 +3,70 @@ https://leetcode.com/studyplan/leetcode-75/
 
 """
 
+class LC75TwoPointers:
+    """https://leetcode.com/studyplan/leetcode-75/
+    """
+    def move_zeroes(self, nums: list[int]) -> None:
+        """
+        Move all 0's to the end of nums while maintaining the relative order of the non-zero elements.
+
+        Do this in-place without making a copy of the array.
+        Do not return anything, modify nums in-place instead.
+        https://leetcode.com/problems/move-zeroes/
+        """
+        next_replacement = -1
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                if next_replacement == -1:
+                    next_replacement = i
+                continue
+
+            if next_replacement != -1:
+                nums[next_replacement] = nums[i]
+                nums[i] = 0
+                next_replacement += 1
+
+        if next_replacement != -1:
+            for i in range(next_replacement, len(nums)):
+                nums[i] = 0
+
+    def is_subsequence(self, s: str, t: str) -> bool:
+        """Check if s is a subsequence of t, or false otherwise.
+
+          A subsequence of a string is a new string that is formed from the original string by deleting some
+          (can be none) of the characters without disturbing the relative positions of the remaining characters.
+          (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+
+          https://leetcode.com/problems/is-subsequence/
+
+        Args:
+            s (str): _description_
+            t (str): _description_
+
+        Returns:
+            bool: _description_
+        """
+        if 0 == len(s) + len(t):
+            return True
+        if 0 == len(t):
+            return False
+        if 0 == len(s):
+            return True
+
+        last_find = -1
+        for i in range(len(s)):
+            if last_find == (len(t) - 1):
+                return False
+            try:
+                if last_find == -1:
+                    last_find = t.index(s[i], 0)
+                else:
+                    last_find = t.index(s[i], last_find+1)
+            except:
+                return False
+
+        return (last_find != -1)
+
 class LC75ArraysEasy:
     """Leetcode easy solutions
     """

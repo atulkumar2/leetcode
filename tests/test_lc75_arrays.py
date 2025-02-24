@@ -4,7 +4,7 @@ import os
 import sys
 import unittest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from lc75_arrays import LC75ArraysEasy, LC75ArraysMedium
+from lc75_arrays import LC75ArraysEasy, LC75ArraysMedium, LC75TwoPointers
 
 
 class TestLC75ArraysEasy(unittest.TestCase):
@@ -79,6 +79,80 @@ class TestLC75ArraysMedium(unittest.TestCase):
     self.assertEqual(LC75ArraysMedium().product_except_self([-1, 1, 0, -3, 3]), [0, 0, 9, 0, 0])
     self.assertEqual(LC75ArraysMedium().product_except_self([1, 2, 3, 4, 5]), [120, 60, 40, 30, 24])
     self.assertEqual(LC75ArraysMedium().product_except_self([1, 2, 3, 4, 5, 6]), [720, 360, 240, 180, 144, 120])
+
+class TestLC75TwoPointers(unittest.TestCase):
+  """Tests for two pointers solutions
+  """
+
+  def test_move_zeroes(self):
+    """Test move_zeroes
+    """
+    test_sets = [
+      ([0, 1, 0, 3, 12], [1, 3, 12, 0, 0]),
+      ([0], [0]),
+      ([1, 0], [1, 0]),
+      ([1, 0, 1], [1, 1, 0]),
+      ([0, 1, 0], [1, 0, 0]),
+      ([0, 0, 1], [1, 0, 0]),
+    ]
+    for test_set in test_sets:
+      nums = test_set[0].copy() # copy to avoid changing the original list
+      LC75TwoPointers().move_zeroes(nums)
+      self.assertEqual(nums, test_set[1])
+
+  def test_is_subsequence(self):
+    """Test is_subsequence
+    """
+    test_sets = [
+      ("abc", "ahbgdc", True),
+      ("axc", "ahbgdc", False),
+      ("", "ahbgdc", True),
+      ("ahbgdc", "ahbgdc", True),
+      ("aaaaaaaa", "bbaaaa", False),
+      ("abc", "", False),
+      ("", "", True),
+      ("a", "a", True),
+      ("a", "b", False),
+      ("a", "ab", True),
+      ("ab", "ba", False),
+      ("ab", "abc", True),
+      ("abc", "acb", False),
+      ("abc", "cab", False),
+      ("abc", "cba", False),
+      ("abc", "bca", False),
+      ("abc", "bac", False),
+      ("abc", "abc", True),
+      ("abc", "abcd", True),
+      ("abc", "ab", False),
+      ("abc", "a", False),
+      ("abc", "b", False),
+      ("abc", "c", False),
+      ("abc", "d", False),
+      ("abc", "e", False),
+      ("abc", "f", False),
+      ("abc", "g", False),
+      ("abc", "h", False),
+      ("abc", "i", False),
+      ("abc", "j", False),
+      ("abc", "k", False),
+      ("abc", "l", False),
+      ("abc", "m", False),
+      ("abc", "n", False),
+      ("abc", "o", False),
+      ("abc", "p", False),
+      ("abc", "q", False),
+      ("abc", "r", False),
+      ("abc", "s", False),
+      ("abc", "t", False),
+      ("abc", "u", False),
+      ("abc", "v", False),
+      ("abc", "w", False),
+      ("abc", "x", False),
+      ("abc", "y", False),
+      ("abc", "z", False),
+    ]
+    for test_set in test_sets:
+      self.assertEqual(LC75TwoPointers().is_subsequence(test_set[0], test_set[1]), test_set[2])
 
 if __name__ == "__main__":
     unittest.main()
