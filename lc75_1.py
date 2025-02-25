@@ -3,7 +3,7 @@ https://leetcode.com/studyplan/leetcode-75/
 
 """
 
-class LC75TwoPointers:
+class LC75EasyTwoPointers:
     """https://leetcode.com/studyplan/leetcode-75/
     """
     def move_zeroes(self, nums: list[int]) -> None:
@@ -67,7 +67,7 @@ class LC75TwoPointers:
 
         return (last_find != -1)
 
-class LC75ArraysEasy:
+class LC75EasyArrays:
     """Leetcode easy solutions
     """
     def merge_alternately(self, word1: str, word2: str) -> str:
@@ -228,7 +228,7 @@ class LC75ArraysEasy:
 
         return "".join(s)
 
-class LC75ArraysMedium:
+class LC75MediumArrays:
     """Leetcode medium solutions
     """
     def reverse_words(self, s: str) -> str:
@@ -279,3 +279,33 @@ class LC75ArraysMedium:
             answer[j] = (answer[j] * mult)
 
         return answer
+
+class LC75EasyPrefixSum:
+    """LG75 Prefix sum problems
+    """
+    def largest_altitude(self, gain: list[int]) -> int:
+        """There is a biker going on a road trip.
+        The road trip consists of n + 1 points at different altitudes.
+        The biker starts his trip on point 0 with altitude equal 0.
+
+        You are given an integer array gain of length n where gain[i] is
+        the net gain in altitude between points i​​​​​​ and i + 1 for all
+        (0 <= i < n). Return the highest altitude of a point.
+
+        https://leetcode.com/problems/find-the-highest-altitude/
+
+        Args:
+            gain (list[int]): _description_
+
+        Returns:
+            int: _description_
+        """
+        high_alt = 0
+        last_alt = 0
+
+        for gain_t in gain:
+            last_alt = last_alt + gain_t
+            if last_alt > high_alt:
+                high_alt = last_alt
+
+        return high_alt
