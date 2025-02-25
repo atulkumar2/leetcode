@@ -170,5 +170,27 @@ class TestLC75EasyPrefixSum(unittest.TestCase):
     self.assertEqual(LC75EasyPrefixSum().largest_altitude(
       [-5, 1, 5, 0, -7, 2, -3, 4, -2, 1, -1, 6, -5, 1, 5, 0, -7, 2, -3, 4, -2, 1, -1, 6]), 2)
 
+  def test_pivot_index(self):
+    """Test pivot_index
+    """
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [1, 7, 3, 6, 5, 6]), 3)
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [1, 2, 3]), -1)
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [2, 1, -1]), 0)
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [1, 2, 1]), 1)
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [1, 2, 3, 4, 5, 6]), -1)
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]), -1)
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [1, 2, 3, 4, 5, 6, 1, 1, 2, 3, 4, 5, 6]), 6)
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]), -1)
+    self.assertEqual(LC75EasyPrefixSum().pivot_index(
+      [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]), -1)
+
 if __name__ == "__main__":
     unittest.main()

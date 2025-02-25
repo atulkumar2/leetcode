@@ -309,3 +309,40 @@ class LC75EasyPrefixSum:
                 high_alt = last_alt
 
         return high_alt
+
+    def pivot_index(self, nums: list[int]) -> int:
+        """Calculate the pivot index of nums.
+
+        The pivot index - sum of all numbers strictly to left of index is equal to sum of all numbers strictly to index's right.
+
+        If index is on left edge of the array, then the left sum is 0.
+        This also applies to the right edge of the array.
+
+        Return the leftmost pivot index. If no such index exists, return -1.
+        https://leetcode.com/problems/find-pivot-index/
+
+
+        Args:
+            nums (list[int]): _description_
+
+        Returns:
+            int: _description_
+        """
+
+        if len(nums) == 1:
+            return 0
+
+        sum_l = 0
+        sum_r = 0
+        for i in range(1, len(nums)):
+            sum_r += nums[i]
+
+        for i in range(len(nums)):
+            if i != 0:
+                sum_l += nums[i-1]
+                sum_r -= nums[i]
+
+            if sum_l == sum_r:
+                return i
+
+        return -1
