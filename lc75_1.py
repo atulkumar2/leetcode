@@ -346,3 +346,43 @@ class LC75EasyPrefixSum:
                 return i
 
         return -1
+
+
+class LC75EasyHashMapSet:
+    """LC75 Easy Hashmap and Set problems
+    """
+    def find_difference(self, nums1: list[int], nums2: list[int]) -> list[list[int]]:
+        """Given two integer arrays nums1 and nums2.
+        Return a list answer of size 2 where:
+            answer[0] is a list of all distinct integers in nums1 which are not present in nums2.
+            answer[1] is a list of all distinct integers in nums2 which are not present in nums1.
+
+        Integers in the lists may be returned in any order.
+
+        https://leetcode.com/problems/find-the-difference-of-two-arrays/
+
+        Args:
+            nums1 (list[int]): _description_
+            nums2 (list[int]): _description_
+
+        Returns:
+            list[list[int]]: _description_
+        """
+        res = [[],[]]
+
+        if nums1[0] not in nums2:
+            res[0].append(nums1[0])
+        if nums2[0] not in nums1:
+            res[1].append(nums2[0])
+
+        nums2 = set(nums2)
+        nums1 = set(nums1)
+        for num in nums1:
+            if (num not in nums2) and (num not in res[0]):
+                res[0].append(num)
+
+        for num in nums2:
+            if (num not in nums1) and (num not in res[1]):
+                res[1].append(num)
+
+        return res

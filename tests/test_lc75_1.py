@@ -4,7 +4,7 @@ import os
 import sys
 import unittest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from lc75_1 import LC75EasyArrays, LC75MediumArrays, LC75EasyTwoPointers, LC75EasyPrefixSum
+from lc75_1 import LC75EasyArrays, LC75MediumArrays, LC75EasyTwoPointers, LC75EasyPrefixSum, LC75EasyHashMapSet
 
 
 class TestLC75EasyArrays(unittest.TestCase):
@@ -191,6 +191,20 @@ class TestLC75EasyPrefixSum(unittest.TestCase):
       [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]), -1)
     self.assertEqual(LC75EasyPrefixSum().pivot_index(
       [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]), -1)
+
+class TestLC75EasyHashMapSet(unittest.TestCase):
+  """Tests for hash map set solutions
+  """
+
+  def test_find_difference(self):
+    """Test find_difference
+    """
+    self.assertEqual(LC75EasyHashMapSet().find_difference([1, 2, 3], [2, 4, 6]),
+      [[1, 3], [4, 6]])
+    self.assertEqual(LC75EasyHashMapSet().find_difference([1, 2, 3, 3], [1, 1, 2, 2]),
+      [[3], []])
+    self.assertEqual(LC75EasyHashMapSet().find_difference([1, 2, 3], [4, 5, 6]),
+      [[1, 2, 3], [4, 5, 6]])
 
 if __name__ == "__main__":
     unittest.main()
